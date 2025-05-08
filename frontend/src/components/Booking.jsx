@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import { Mail, User, Users, Calendar, Package } from 'lucide-react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { Link } from 'react-scroll';
 
 const Booking = () => {
   const formik = useFormik({
@@ -262,13 +263,16 @@ const Booking = () => {
               <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
                 Munroe Boating in Munroe Island offers unforgettable experiences, from tranquil shikara rides to adventurous kayaking and fishing tours. Stay at Royal Island Resort for a complete Munroe Island getaway.
               </p>
-              <motion.a
-                href="#packages"
-                whileHover={{ scale: 1.05 }}
-                className="inline-block px-6 py-3 bg-transparent border border-gray-500 text-gray-200 rounded-md font-semibold hover:bg-gray-600 hover:text-white transition-colors duration-200"
-              >
-                View Munroe Island Packages
-              </motion.a>
+              <motion.div whileHover={{ scale: 1.05 }}>
+  <Link
+    to="packages"
+    smooth={true}
+    duration={500}
+    className="inline-block px-6 py-3 bg-transparent border border-gray-500 text-gray-200 rounded-md font-semibold hover:bg-gray-600 hover:text-white transition-colors duration-200 cursor-pointer"
+  >
+    View Munroe Island Packages
+  </Link>
+</motion.div>
             </div>
           </motion.div>
         </div>
