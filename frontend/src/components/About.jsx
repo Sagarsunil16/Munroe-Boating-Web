@@ -1,12 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { Anchor, Sailboat } from 'lucide-react';
 
 const About = () => {
   return (
     <section className="py-16 bg-black text-white min-h-screen relative overflow-hidden">
-      {/* Subtle Wave Background */}
       <div
         className="absolute inset-0 opacity-10"
         style={{
@@ -16,7 +15,6 @@ const About = () => {
         }}
       ></div>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Mission Statement */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -27,11 +25,11 @@ const About = () => {
             <Anchor size={40} className="text-gray-300" aria-hidden="true" />
           </div>
           <h1 className="text-4xl sm:text-5xl font-extrabold mb-6 tracking-tight text-white">
-            About Munroe Boating
+            About Munroe Boating in Munroe Island
           </h1>
           <div className="bg-gray-800 p-8 rounded-lg shadow-lg border border-gray-700 hover:border-gray-500 transition-all duration-300 max-w-4xl mx-auto">
             <p className="text-xl text-gray-200 leading-relaxed">
-              Munroe Boating is dedicated to delivering exceptional boating experiences that showcase the serene beauty of Munroethuruthu’s backwaters. Our commitment to sustainability, customer satisfaction, and authentic exploration ensures every journey is memorable and meaningful.
+              Munroe Boating offers premier boating experiences in Munroethuruthu, also known as Munroe Island, Kerala. From shikara boating to kayaking, canoeing, fishing tours, and stays at the Royal Island Resort, we are committed to sustainable adventures that showcase the serene beauty of Munroe Island’s backwaters.
             </p>
           </div>
           <motion.div
@@ -40,20 +38,16 @@ const About = () => {
             transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
             className="mt-8"
           >
-            <Link
+            {/* <Link
               to="/booking"
               className="inline-block px-8 py-4 bg-gray-700 text-white font-semibold text-lg rounded-lg shadow-md hover:bg-gray-600 transition-all duration-300"
-              aria-label="Book your boating experience"
+              aria-label="Book your Munroe Island boating experience"
             >
-              Plan Your Journey
-            </Link>
+              Book Your Munroe Island Adventure
+            </Link> */}
           </motion.div>
         </motion.div>
-
-        {/* Divider */}
         <div className="border-t border-gray-600 opacity-50 my-12"></div>
-
-        {/* History */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -64,7 +58,7 @@ const About = () => {
             <Sailboat size={40} className="text-gray-300" aria-hidden="true" />
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-center text-white">
-            Our Heritage
+            Our Heritage in Munroethuruthu
           </h2>
           <div className="bg-gray-800 p-8 rounded-lg shadow-lg border border-gray-700 hover:border-gray-500 transition-all duration-300 max-w-4xl mx-auto">
             <div className="space-y-6">
@@ -73,9 +67,9 @@ const About = () => {
                   2015
                 </div>
                 <div className="ml-4">
-                  <h3 className="text-xl font-semibold text-white">Our Founding</h3>
+                  <h3 className="text-xl font-semibold text-white">Founded in Munroe Island</h3>
                   <p className="text-gray-300 leading-relaxed">
-                    Established with a single houseboat, Munroe Boating was born from a vision to share the tranquil splendor of Munroethuruthu’s waterways with the world.
+                    Munroe Boating began with a single shikara boat, offering intimate tours through the tranquil backwaters of Munroethuruthu, driven by a passion to share Munroe Island’s natural beauty.
                   </p>
                 </div>
               </div>
@@ -84,9 +78,9 @@ const About = () => {
                   Today
                 </div>
                 <div className="ml-4">
-                  <h3 className="text-xl font-semibold text-white">Our Present</h3>
+                  <h3 className="text-xl font-semibold text-white">Leading Boating in Munroethuruthu</h3>
                   <p className="text-gray-300 leading-relaxed">
-                    Today, we provide a diverse fleet of luxurious houseboats and dynamic speedboats, offering eco-conscious adventures that preserve the pristine beauty of Kerala’s backwaters.
+                    From one shikara to a fleet of shikara boats, canoes, and kayaks, we now offer fishing tours, all-in-one adventure packages, and luxurious stays at the Royal Island Resort, preserving the pristine beauty of Munroe Island’s backwaters.
                   </p>
                 </div>
               </div>

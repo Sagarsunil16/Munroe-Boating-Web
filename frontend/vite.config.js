@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
+import viteImagemin from 'vite-plugin-imagemin';
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -9,7 +10,15 @@ export default defineConfig({
       '@': '/src',
     },
   },
-  plugins: [react(), tailwindcss()],
+  plugins: [
+    react(),
+    tailwindcss(),
+    viteImagemin({
+      mozjpeg: { quality: 80 },
+      optipng: { optimizationLevel: 5 },
+      webp: { quality: 80 },
+    }),
+  ],
   server: {
     proxy: {
       '/api': {

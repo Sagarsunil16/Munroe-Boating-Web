@@ -8,24 +8,31 @@ import 'slick-carousel/slick/slick-theme.css';
 const testimonials = [
   {
     id: 1,
-    name: 'John Doe',
-    review: 'The houseboat tour was unforgettable! The serene backwaters and excellent service made it a perfect getaway.',
+    name: 'Anil Nair',
+    review: 'The shikara boating through Munroe Island’s backwaters was magical! The lush greenery and calm waters made it a perfect family outing. Highly recommend Munroe Boating!',
     rating: 5,
-    avatar: 'https://via.placeholder.com/50?text=JD',
+    avatar: 'https://images.unsplash.com/photo-1506794778202-6d4d69735336?ixlib=rb-4.0.3&crop=faces&fit=crop&w=50&h=50',
   },
   {
     id: 2,
-    name: 'Sarah Smith',
-    review: 'Thrilling speedboat adventure! The guide was fantastic, and the views of Munroethuruthu were stunning.',
+    name: 'Priya Suresh',
+    review: 'Our stay at the Royal Island Resort was exceptional, paired with a thrilling kayaking adventure in Munroethuruthu. Munroe Boating made our trip unforgettable!',
     rating: 4,
-    avatar: 'https://via.placeholder.com/50?text=SS',
+    avatar: 'https://images.unsplash.com/photo-1519085360753-afccb1c7d89e?ixlib=rb-4.0.3&crop=faces&fit=crop&w=50&h=50',
   },
   {
     id: 3,
-    name: 'Michael Lee',
-    review: 'Our fishing trip was relaxing and fun. Caught some fish and enjoyed the peaceful waters. Highly recommend!',
+    name: 'Siddharth Menon',
+    review: 'The fishing tour in Munroe Island was a highlight! Catching fish in the serene backwaters with expert guides was so relaxing. Munroe Boating is the best!',
     rating: 5,
-    avatar: 'https://via.placeholder.com/50?text=ML',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&crop=faces&fit=crop&w=50&h=50',
+  },
+  {
+    id: 4,
+    name: 'Lakshmi Varghese',
+    review: 'Canoeing through the narrow canals of Munroethuruthu was breathtaking. Munroe Boating’s knowledgeable guides made our Munroe Island adventure unforgettable!',
+    rating: 5,
+    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&crop=faces&fit=crop&w=50&h=50',
   },
 ];
 
@@ -57,7 +64,6 @@ const Testimonials = () => {
 
   return (
     <section id="testimonials" className="py-20 bg-black text-white relative overflow-hidden">
-      {/* Subtle Wave Background */}
       <div
         className="absolute inset-0 opacity-10"
         style={{
@@ -77,10 +83,10 @@ const Testimonials = () => {
             <Anchor size={40} className="text-gray-300" aria-hidden="true" />
           </div>
           <h2 className="text-4xl lg:text-5xl font-extrabold text-white mb-6 tracking-tight">
-            What Our Customers Say
+            Munroe Island Guest Reviews
           </h2>
           <p className="text-xl text-gray-200 leading-relaxed max-w-4xl mx-auto">
-            Hear from our guests about their unforgettable experiences with Munroe Boating in Munroethuruthu’s backwaters.
+            Hear from guests about their unforgettable Munroe Boating experiences in Munroethuruthu’s backwaters, from shikara tours to Royal Island Resort stays.
           </p>
         </motion.div>
         <Slider {...sliderSettings} className="mx-[-8px]">
@@ -95,7 +101,7 @@ const Testimonials = () => {
                 <div className="flex items-center mb-4">
                   <img
                     src={testimonial.avatar}
-                    alt={`${testimonial.name}'s avatar`}
+                    alt={`${testimonial.name}'s review of Munroe Boating`}
                     className="w-12 h-12 rounded-full mr-3"
                   />
                   <div>

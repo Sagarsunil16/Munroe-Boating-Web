@@ -1,7 +1,14 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { Instagram, Facebook, Twitter, Mail, Phone, MapPin } from 'lucide-react';
+import React from "react";
+import { motion } from "framer-motion";
+import {Link as ScrollLink} from 'react-scroll'
+import {
+  Instagram,
+  Facebook,
+  Twitter,
+  Mail,
+  Phone,
+  MapPin,
+} from "lucide-react";
 
 const Footer = () => {
   return (
@@ -10,61 +17,103 @@ const Footer = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           className="grid grid-cols-1 md:grid-cols-3 gap-8"
         >
           {/* Contact Info */}
           <div>
-            <h3 className="text-xl font-extrabold text-white mb-4 tracking-tight">Contact Us</h3>
+            <h3 className="text-xl font-extrabold text-white mb-4 tracking-tight">
+              Contact Us
+            </h3>
             <ul className="space-y-3 text-gray-300">
               <li className="flex items-center">
-                <Mail size={18} className="mr-2 text-gray-400" aria-hidden="true" />
-                <a href="mailto:info@munroeboating.com" className="hover:text-gray-100 transition-colors">
+                <Mail
+                  size={18}
+                  className="mr-2 text-gray-400"
+                  aria-hidden="true"
+                />
+                <a
+                  href="mailto:info@munroeboating.com"
+                  className="hover:text-gray-100 transition-colors"
+                >
                   info@munroeboating.com
                 </a>
               </li>
               <li className="flex items-center">
-                <Phone size={18} className="mr-2 text-gray-400" aria-hidden="true" />
-                <a href="tel:+918138804905" className="hover:text-gray-100 transition-colors">
+                <Phone
+                  size={18}
+                  className="mr-2 text-gray-400"
+                  aria-hidden="true"
+                />
+                <a
+                  href="tel:+918138804905"
+                  className="hover:text-gray-100 transition-colors"
+                >
                   +91 813-880-4905
                 </a>
               </li>
               <li className="flex items-center">
-                <MapPin size={18} className="mr-2 text-gray-400" aria-hidden="true" />
+                <MapPin
+                  size={18}
+                  className="mr-2 text-gray-400"
+                  aria-hidden="true"
+                />
                 <span>Plavaravayalil, Munroethuruthu, Kerala, India</span>
               </li>
             </ul>
           </div>
           {/* Navigation Links */}
           <div>
-            <h3 className="text-xl font-extrabold text-white mb-4 tracking-tight">Quick Links</h3>
+            <h3 className="text-xl font-extrabold text-white mb-4 tracking-tight">
+              Quick Links
+            </h3>
             <ul className="space-y-3 text-gray-300">
               <li>
-                <Link to="/" className="hover:text-gray-100 transition-colors">
+                <ScrollLink
+                  to="home"
+                  smooth={true}
+                  duration={600}
+                  offset={-70}
+                  className="hover:text-gray-100 transition-colors cursor-pointer"
+                >
                   Home
-                </Link>
+                </ScrollLink>
               </li>
               <li>
-                <Link to="/booking" className="hover:text-gray-100 transition-colors">
+                <ScrollLink
+                  to="booking"
+                  smooth={true}
+                  duration={600}
+                  offset={-70}
+                  className="hover:text-gray-100 transition-colors cursor-pointer"
+                >
                   Book Now
-                </Link>
+                </ScrollLink>
               </li>
               <li>
-                <Link to="/#packages" className="hover:text-gray-100 transition-colors">
+                <ScrollLink
+                  to="packages"
+                  smooth={true}
+                  duration={600}
+                  offset={-70}
+                  className="hover:text-gray-100 transition-colors cursor-pointer"
+                >
                   Packages
-                </Link>
+                </ScrollLink>
               </li>
             </ul>
           </div>
           {/* Social Media */}
           <div>
-            <h3 className="text-xl font-extrabold text-white mb-4 tracking-tight">Follow Us</h3>
+            <h3 className="text-xl font-extrabold text-white mb-4 tracking-tight">
+              Follow Us
+            </h3>
             <div className="flex space-x-4">
               <motion.a
                 href="https://instagram.com/munroeboating"
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.2, color: '#E5E7EB' }}
+                whileHover={{ scale: 1.2, color: "#E5E7EB" }}
                 aria-label="Follow us on Instagram"
               >
                 <Instagram size={24} className="text-gray-400" />
@@ -73,7 +122,7 @@ const Footer = () => {
                 href="https://facebook.com/munroeboating"
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.2, color: '#E5E7EB' }}
+                whileHover={{ scale: 1.2, color: "#E5E7EB" }}
                 aria-label="Follow us on Facebook"
               >
                 <Facebook size={24} className="text-gray-400" />
@@ -82,7 +131,7 @@ const Footer = () => {
                 href="https://twitter.com/munroeboating"
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.2, color: '#E5E7EB' }}
+                whileHover={{ scale: 1.2, color: "#E5E7EB" }}
                 aria-label="Follow us on Twitter"
               >
                 <Twitter size={24} className="text-gray-400" />
@@ -91,7 +140,17 @@ const Footer = () => {
           </div>
         </motion.div>
         <div className="mt-12 text-center text-gray-500 text-sm">
-          © {new Date().getFullYear()} Munroe Boating. All rights reserved.
+          © {new Date().getFullYear()} Munroe Boating. All rights reserved. | Designed by{" "}
+          <motion.a
+            href="https://sagar-sunil-portfolio.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-400 hover:text-blue-300 underline transition-colors duration-200"
+            aria-label="Visit Sagar Sunil's portfolio"
+            whileHover={{ scale: 1.05 }}
+          >
+            Sagar Sunil
+          </motion.a>
         </div>
       </div>
     </footer>

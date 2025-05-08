@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-scroll';
+// import { Link } from 'react-scroll';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Anchor } from 'lucide-react';
@@ -81,11 +81,11 @@ const Services = () => {
                     {service.title}
                   </CardTitle>
                   <p className="text-gray-300 mb-4">{service.description}</p>
-                  <Link to="booking" smooth duration={500}>
+                  {/* <Link to="booking" smooth duration={500}>
                     <Button className="bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 rounded-md font-semibold transition-colors duration-200">
-                      Book Now
+                      Book Now 
                     </Button>
-                  </Link>
+                  </Link> */}
                 </CardContent>
               </Card>
             </motion.div>

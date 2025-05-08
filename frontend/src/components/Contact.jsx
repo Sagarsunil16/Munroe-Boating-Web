@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import { motion } from 'framer-motion';
 import { User, Mail, MessageSquare, Send, Phone, MapPin, Anchor } from 'lucide-react';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const Contact = () => {
   const formik = useFormik({
@@ -17,18 +18,20 @@ const Contact = () => {
       email: Yup.string().email('Invalid email address').required('Email is required'),
       message: Yup.string().required('Message is required'),
     }),
-    onSubmit: async(values) => {try {
-      await axios.post('http://localhost:3000/api/contact',values)
-      formik.resetForm();
-    } catch (error) {
-      console.log(error)
-    }
+    onSubmit: async (values, { resetForm }) => {
+      try {
+        await axios.post('api/contact', values);
+        toast.success('Message sent successfully! We will get back to you soon.');
+        resetForm();
+      } catch (error) {
+        console.error('Contact form error:', error);
+        toast.error('Failed to send message. Please try again later.');
+      }
     },
   });
 
   return (
     <section id="contact" className="py-20 bg-black text-white min-h-screen relative overflow-hidden">
-      {/* Subtle Wave Background */}
       <div
         className="absolute inset-0 opacity-10"
         style={{
@@ -48,13 +51,12 @@ const Contact = () => {
             <Anchor size={40} className="text-gray-300" aria-hidden="true" />
           </div>
           <h1 className="text-4xl lg:text-5xl font-extrabold text-white mb-6 tracking-tight">
-            Get in Touch
+            Contact Munroe Boating in Munroe Island
           </h1>
           <p className="text-xl text-gray-200 leading-relaxed max-w-4xl mx-auto">
-            Have questions or need assistance? Contact Munroe Boating, and let us help you plan your perfect backwater adventure.
+            Get in touch with Munroe Boating in Munroethuruthu, Munroe Island, for shikara boating, kayaking, fishing tours, or inquiries about Royal Island Resort stays.
           </p>
         </motion.div>
-        {/* Contact Form */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -64,7 +66,6 @@ const Contact = () => {
             onSubmit={formik.handleSubmit}
             className="bg-gray-800 text-white p-8 rounded-lg shadow-lg border border-gray-700 hover:border-gray-500 transition-all duration-300 max-w-lg mx-auto"
           >
-            {/* Name */}
             <div className="mb-6 relative">
               <label htmlFor="name" className="block text-sm font-semibold text-gray-200 mb-2">
                 Name
@@ -89,7 +90,6 @@ const Contact = () => {
                 <p className="mt-2 text-sm text-red-500">{formik.errors.name}</p>
               )}
             </div>
-            {/* Email */}
             <div className="mb-6 relative">
               <label htmlFor="email" className="block text-sm font-semibold text-gray-200 mb-2">
                 Email
@@ -114,7 +114,6 @@ const Contact = () => {
                 <p className="mt-2 text-sm text-red-500">{formik.errors.email}</p>
               )}
             </div>
-            {/* Message */}
             <div className="mb-6 relative">
               <label htmlFor="message" className="block text-sm font-semibold text-gray-200 mb-2">
                 Message
@@ -139,7 +138,6 @@ const Contact = () => {
                 <p className="mt-2 text-sm text-red-500">{formik.errors.message}</p>
               )}
             </div>
-            {/* Submit Button */}
             <motion.button
               type="submit"
               whileHover={{ scale: 1.05 }}
@@ -154,7 +152,6 @@ const Contact = () => {
             </motion.button>
           </form>
         </motion.div>
-        {/* Contact Details */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -162,7 +159,7 @@ const Contact = () => {
           className="mt-12 text-center"
         >
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-6 tracking-tight">
-            Other Ways to Reach Us
+            Reach Munroe Boating in Munroethuruthu
           </h2>
           <ul className="space-y-4 text-gray-300 text-base sm:text-lg max-w-md mx-auto">
             <li className="flex items-center justify-center">
@@ -179,7 +176,7 @@ const Contact = () => {
             </li>
             <li className="flex items-center justify-center">
               <MapPin size={18} className="mr-2 text-gray-400" aria-hidden="true" />
-              <span>Plavaravayalil, Munroethuruthu, Kerala, India</span>
+              <span>Plavaravayalil, Munroethuruthu, Munroe Island, Kerala, India</span>
             </li>
           </ul>
         </motion.div>

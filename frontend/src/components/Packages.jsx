@@ -1,37 +1,103 @@
 import React from 'react';
 import Slider from 'react-slick';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { Anchor } from 'lucide-react';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import {Link as ScrollLink} from 'react-scroll'
 
 const packages = [
   {
     id: 1,
     title: 'Houseboat Tour',
-    description: 'Cruise through Munroethuruthu’s serene backwaters on a luxurious houseboat.',
-    price: '$150/day',
+    description: 'Cruise through Munroethuruthu’s serene backwaters on a luxurious houseboat with traditional Kerala cuisine.',
+    price: '₹12,000/day',
     image: 'https://via.placeholder.com/400x300?text=Houseboat',
     slug: 'houseboat',
   },
   {
     id: 2,
     title: 'Speedboat Adventure',
-    description: 'Feel the thrill of speeding across the waters with our guided adventure.',
-    price: '$100/hour',
+    description: 'Feel the thrill of speeding across the scenic backwaters with our guided adventure.',
+    price: '₹3,000/hour',
     image: 'https://via.placeholder.com/400x300?text=Speedboat',
     slug: 'speedboat',
   },
   {
     id: 3,
     title: 'Fishing Trip',
-    description: 'Enjoy a relaxing day fishing in the tranquil backwaters.',
-    price: '$80/day',
+    description: 'Enjoy a peaceful day fishing with local experts in tranquil waters.',
+    price: '₹1,500/day',
     image: 'https://via.placeholder.com/400x300?text=Fishing',
     slug: 'fishing',
   },
+  {
+    id: 4,
+    title: 'Kayaking Experience',
+    description: 'Navigate narrow canals and explore untouched beauty with a guided kayaking tour.',
+    price: '₹800/hour',
+    image: 'https://via.placeholder.com/400x300?text=Kayaking',
+    slug: 'kayaking',
+  },
+  {
+    id: 5,
+    title: 'Sunset Cruise',
+    description: 'Witness the mesmerizing sunset while cruising gently through the backwaters.',
+    price: '₹1,200/evening',
+    image: 'https://via.placeholder.com/400x300?text=Sunset+Cruise',
+    slug: 'sunset-cruise',
+  },
+  {
+    id: 6,
+    title: 'Canoeing Tour',
+    description: 'Paddle through narrow channels and experience authentic local life up close.',
+    price: '₹600/hour',
+    image: 'https://via.placeholder.com/400x300?text=Canoeing',
+    slug: 'canoeing',
+  },
+  {
+    id: 7,
+    title: '360° Backwater Tour',
+    description: 'A complete guided experience of the village, local culture, and hidden gems of Munroe Island.',
+    price: '₹2,000/person',
+    image: 'https://via.placeholder.com/400x300?text=360+Tour',
+    slug: '360-tour',
+  },
+  {
+    id: 8,
+    title: 'Food & Stay at Royal Island',
+    description: 'Enjoy authentic Kerala cuisine and cozy accommodation on the Royal Island.',
+    price: '₹3,500/night',
+    image: 'https://via.placeholder.com/400x300?text=Royal+Island+Stay',
+    slug: 'food-stay',
+  },
+  {
+    id: 9,
+    title: 'Bird Watching Tour',
+    description: 'Explore the rich birdlife of the region with a naturalist guide.',
+    price: '₹1,000/morning',
+    image: 'https://via.placeholder.com/400x300?text=Bird+Watching',
+    slug: 'birdwatching',
+  },
+  {
+    id: 10,
+    title: 'Shikkara Ride',
+    description: 'Experience a relaxing ride in a traditional wooden shikkara through scenic waters.',
+    price: '₹1,000/hour',
+    image: 'https://via.placeholder.com/400x300?text=Shikkara+Ride',
+    slug: 'shikkara-ride',
+  },
+  {
+    id: 11,
+    title: 'Village Cultural Tour',
+    description: 'Get immersed in Kerala’s local traditions, dance, and crafts with guided cultural walks.',
+    price: '₹1,800/person',
+    image: 'https://via.placeholder.com/400x300?text=Cultural+Tour',
+    slug: 'cultural-tour',
+  },
 ];
+
 
 const Packages = () => {
   const sliderSettings = {
@@ -119,12 +185,14 @@ const Packages = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <Link
-                      to={`/booking?package=${pkg.slug}`}
-                      className="inline-block px-6 py-3 bg-gray-700 text-white font-semibold rounded-md shadow-md hover:bg-gray-600 transition-all duration-200"
-                    >
-                      Book Now
-                    </Link>
+                    <ScrollLink
+  to="booking"
+  smooth={true}
+  duration={500}
+  className="inline-block px-6 py-3 bg-gray-700 text-white font-semibold rounded-md shadow-md hover:bg-gray-600 transition-all duration-200"
+>
+  Book Now
+</ScrollLink>
                   </motion.div>
                 </div>
               </motion.div>

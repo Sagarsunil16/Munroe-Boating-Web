@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useFormik } from 'formik';
 import { motion } from 'framer-motion';
 import * as Yup from 'yup';
 import { Mail, User, Users, Calendar, Package } from 'lucide-react';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const Booking = () => {
-  const [submissionStatus, setSubmissionStatus] = useState(null);
-
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -29,17 +28,14 @@ const Booking = () => {
         .required('Number of guests is required'),
       message: Yup.string(),
     }),
-    onSubmit: async (values, { setSubmitting }) => {
+    onSubmit: async (values, { setSubmitting, resetForm }) => {
       try {
         const response = await axios.post('api/booking', values);
-        console.log('Booking Submitted:', response.data);
-        setSubmissionStatus('success');
-        formik.resetForm();
-        setTimeout(() => setSubmissionStatus(null), 3000); // Clear status after 3 seconds
+        toast.success(response.data.message || 'Booking submitted successfully! We will contact you soon.');
+        resetForm();
       } catch (error) {
         console.error('Submission Error:', error);
-        setSubmissionStatus('error');
-        setTimeout(() => setSubmissionStatus(null), 3000);
+        toast.error(error.response?.data?.message || 'Failed to submit booking. Please try again.');
       } finally {
         setSubmitting(false);
       }
@@ -48,7 +44,6 @@ const Booking = () => {
 
   return (
     <section id="booking" className="py-20 bg-black text-white min-h-screen relative overflow-hidden flex items-center">
-      {/* Subtle Wave Background */}
       <div
         className="absolute inset-0 opacity-10"
         style={{
@@ -68,14 +63,13 @@ const Booking = () => {
             <Calendar size={40} className="text-gray-300" aria-hidden="true" />
           </div>
           <h2 className="text-4xl lg:text-5xl font-extrabold text-white mb-6 tracking-tight">
-            Plan Your Boating Journey
+            Book Your Munroe Island Boating Adventure
           </h2>
           <p className="text-xl text-gray-200 leading-relaxed max-w-4xl mx-auto">
-            Reserve your adventure with Munroe Boating and experience the serene beauty of Munroethuruthu’s backwaters.
+            Plan your trip with Munroe Boating in Munroethuruthu, Munroe Island. Choose from shikara boating, kayaking, canoeing, fishing tours, or a stay at Royal Island Resort.
           </p>
         </motion.div>
         <div className="flex flex-col md:flex-row gap-6 lg:gap-12">
-          {/* Left: Booking Form */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -86,7 +80,6 @@ const Booking = () => {
               onSubmit={formik.handleSubmit}
               className="bg-gray-800 shadow-lg rounded-lg p-6 max-w-sm mx-auto md:mx-0 border border-gray-700 hover:border-gray-500 transition-all duration-300"
             >
-              {/* Name */}
               <div className="mb-4 relative">
                 <label htmlFor="name" className="block text-sm font-semibold text-gray-200">
                   Full Name
@@ -111,7 +104,6 @@ const Booking = () => {
                   <p className="mt-1 text-sm text-red-500">{formik.errors.name}</p>
                 )}
               </div>
-              {/* Email */}
               <div className="mb-4 relative">
                 <label htmlFor="email" className="block text-sm font-semibold text-gray-200">
                   Email
@@ -136,7 +128,6 @@ const Booking = () => {
                   <p className="mt-1 text-sm text-red-500">{formik.errors.email}</p>
                 )}
               </div>
-              {/* Phone */}
               <div className="mb-4 relative">
                 <label htmlFor="phone" className="block text-sm font-semibold text-gray-200">
                   Phone Number
@@ -161,7 +152,6 @@ const Booking = () => {
                   <p className="mt-1 text-sm text-red-500">{formik.errors.phone}</p>
                 )}
               </div>
-              {/* Date */}
               <div className="mb-4 relative">
                 <label htmlFor="date" className="block text-sm font-semibold text-gray-200">
                   Booking Date
@@ -189,7 +179,6 @@ const Booking = () => {
                   <p className="mt-1 text-sm text-red-500">{formik.errors.date}</p>
                 )}
               </div>
-              {/* Package */}
               <div className="mb-4 relative">
                 <label htmlFor="package" className="block text-sm font-semibold text-gray-200">
                   Package
@@ -209,17 +198,17 @@ const Booking = () => {
                     }`}
                   >
                     <option value="">Select a Package</option>
-                    <option value="houseboat">Houseboat Tour</option>
-                    <option value="speedboat">Speedboat Adventure</option>
-                    <option value="fishing">Fishing Trip</option>
+                    <option value="shikara">Shikara Boating</option>
                     <option value="kayaking">Kayaking Adventure</option>
+                    <option value="canoeing">Canoeing Tour</option>
+                    <option value="fishing">Fishing Trip</option>
+                    <option value="resort">Royal Island Resort Stay</option>
                   </select>
                 </div>
                 {formik.touched.selectedPackage && formik.errors.selectedPackage && (
                   <p className="mt-1 text-sm text-red-500">{formik.errors.selectedPackage}</p>
                 )}
               </div>
-              {/* Guests */}
               <div className="mb-4 relative">
                 <label htmlFor="guests" className="block text-sm font-semibold text-gray-200">
                   Number of Guests
@@ -245,18 +234,6 @@ const Booking = () => {
                   <p className="mt-1 text-sm text-red-500">{formik.errors.guests}</p>
                 )}
               </div>
-              {/* Submission Feedback */}
-              {submissionStatus === 'success' && (
-                <p className="mb-4 text-sm text-green-500 text-center">
-                  Booking submitted successfully!
-                </p>
-              )}
-              {submissionStatus === 'error' && (
-                <p className="mb-4 text-sm text-red-500 text-center">
-                  Failed to submit booking. Please try again.
-                </p>
-              )}
-              {/* Submit Button */}
               <div className="text-center">
                 <motion.button
                   type="submit"
@@ -267,12 +244,11 @@ const Booking = () => {
                     formik.isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
                   }`}
                 >
-                  {formik.isSubmitting ? 'Submitting...' : 'Reserve Now'}
+                  {formik.isSubmitting ? 'Submitting...' : 'Book Now'}
                 </motion.button>
               </div>
             </form>
           </motion.div>
-          {/* Right: Interesting Text */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -281,17 +257,17 @@ const Booking = () => {
           >
             <div className="text-white space-y-4">
               <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-                Embark on a Nautical Escape
+                Explore Munroethuruthu’s Backwaters
               </h3>
               <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
-                Experience the tranquil beauty of Munroethuruthu’s backwaters with Munroe Boating. From luxurious houseboat cruises to thrilling speedboat adventures, our curated packages promise unforgettable moments on the water.
+                Munroe Boating in Munroe Island offers unforgettable experiences, from tranquil shikara rides to adventurous kayaking and fishing tours. Stay at Royal Island Resort for a complete Munroe Island getaway.
               </p>
               <motion.a
                 href="#packages"
                 whileHover={{ scale: 1.05 }}
                 className="inline-block px-6 py-3 bg-transparent border border-gray-500 text-gray-200 rounded-md font-semibold hover:bg-gray-600 hover:text-white transition-colors duration-200"
               >
-                Explore Our Packages
+                View Munroe Island Packages
               </motion.a>
             </div>
           </motion.div>

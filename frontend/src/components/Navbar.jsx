@@ -30,7 +30,7 @@ const Navbar = () => {
                 />
               </svg>
               <span className="text-2xl font-extrabold text-white tracking-tight">
-                Munroe Boating
+                  MUNROE BOATING
               </span>
             </ScrollLink>
           </div>
@@ -44,7 +44,7 @@ const Navbar = () => {
               Home
             </ScrollLink>
             <ScrollLink
-              to="our-story"
+              to="about"
               smooth
               duration={500}
               className="text-gray-300 hover:text-white transition-colors duration-200 font-semibold cursor-pointer"
